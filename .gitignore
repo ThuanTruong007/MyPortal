@@ -1,0 +1,6 @@
+.vs/
+v16/
+bin/
+debug/
+*.pdb
+*.dll
