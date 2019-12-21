@@ -1,16 +1,21 @@
 ﻿using Dapper;
 using DataManagement.Entities;
+using DataManagement.Entities.Enums;
+using DataManagement.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 using static System.Data.CommandType;
-using DataManagement.Repository.Interfaces;
+
 namespace DataManagement.Repository
 {
-    public class UserRepository : BaseRepository, IUserRepository
+    public class UserRepository : AppDbRepositoryBase<User>, IUserRepository
     {
-        public bool AddUser(User user)
+        public UserRepository(IDbConnectionFactory dbConnectionFactory) : base(dbConnectionFactory) { }
+
+        public async Task<int> AddUser(User user)
         {
             try
             {
@@ -22,10 +27,9 @@ namespace DataManagement.Repository
                 parameters.Add("@LinkedInUrl", user.LinkedInUrl);
                 parameters.Add("@TwitterUrl", user.TwitterUrl);
                 parameters.Add("@PersonalWebUrl", user.PersonalWebUrl);
-                using (var con = NewSqlConnection())
+                using (var con = base.NewSqlConnection())
                 {
-                    SqlMapper.Execute(con, "AddUser", param: parameters, commandType: StoredProcedure);
-                    return true;
+                    return await con.ExecuteScalarAsync<int>("Security.uspAddUser", param: parameters, commandType: StoredProcedure);                    
                 }
             }
             catch (Exception ex)
@@ -43,24 +47,23 @@ namespace DataManagement.Repository
                 return true;
             }
         }
-        public IList<User> GetAllUser()
+        public async Task<IList<User>> GetAllUser()
         {
             using (var con = NewSqlConnection())
             {
-                con.Open();
-                var customerList = SqlMapper.Query<User>(con, "GetAllUsers", commandType: StoredProcedure).ToList();
-                return customerList;
+                var result = await con.QueryAsync<User>("Security.uspGetAllUser", commandType: StoredProcedure);
+                return result.ToList();
             }
         }
-        public User GetUserById(int userId)
+        public async Task<User> GetUserById(int userId)
         {
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@CustomerID", userId);
+                parameters.Add("@UserId", userId);
                 using (var con = NewSqlConnection())
                 {
-                    return SqlMapper.Query<User>((SqlConnection)con, "GetUserById", parameters, commandType: StoredProcedure).FirstOrDefault();
+                    return await con.QuerySingleOrDefaultAsync<User>("Security.uspGetUserById", parameters, commandType: StoredProcedure);
                 }
             }
             catch (Exception)

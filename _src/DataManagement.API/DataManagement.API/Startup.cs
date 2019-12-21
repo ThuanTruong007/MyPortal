@@ -14,6 +14,11 @@ using DataManagement.Business;
 using DataManagement.Repository;
 using DataManagement.Business.Interfaces;
 using DataManagement.Repository.Interfaces;
+using DataManagement.Entities.Enums;
+using DataManagement.Entities;
+using Autofac;
+using DataManagement.API.Ioc;
+using System.Reflection;
 
 namespace DataManagement.API
 {
@@ -29,9 +34,44 @@ namespace DataManagement.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IUserManager, UserManager>();
-            services.AddTransient<IUserRepository, UserRepository>();
-            services.AddControllers();
+            var databaseConnections = new Dictionary<DatabaseConnection, string>
+            {
+                {DatabaseConnection.AppDb,Configuration.GetConnectionString("appDb") },
+                {DatabaseConnection.LogDb,Configuration.GetConnectionString("logDb") },
+                {DatabaseConnection.StagingDB,Configuration.GetConnectionString("stagingDb") }
+            };
+            services.AddSingleton<IDictionary<DatabaseConnection, string>>(databaseConnections);
+
+            // Inject the factory
+            services.AddSingleton<IDbConnectionFactory, DbConnectionFactory>();
+
+
+            //services.AddSingleton(typeof(IRepository<>),sp=> 
+            //{
+            //    return new Object();
+            //}
+            //);
+            //services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
+            //services.AddSingleton(typeof(IRepository<>), typeof(AppDbConnectionRepository<>));
+            services.AddSingleton(typeof(IAppDbRepository<>), typeof(AppDbRepositoryBase<>));
+
+            //services.AddSingleton<IAppDbConnectionString,DbConnectionString>()
+            //services.AddSingleton(typeof(IHandlerService<>), typeof(HandlerService<>));
+            //services.AddSingleton<IUserRepository, UserRepository>();
+
+            //var assembly = Assembly.GetExecutingAssembly();
+
+
+
+            //services.AddSingleton<IUserManager, UserManager>();
+            //services.AddSingleton<IUserManager>(
+            //    sp =>
+            //    {
+            //        return new UserManager(new UserRepository(new DbConnectionFactory(databaseConnections)));
+            //    }
+            //    );
+
+            services.AddControllers().AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,7 +91,16 @@ namespace DataManagement.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                //endpoints.MapDefaultControllerRoute();
+               
+                    //name: "default"
+                    //, pattern: "{controller}/{action}/{ id ?}");
             });
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule<AutofacModule>();
         }
     }
 }

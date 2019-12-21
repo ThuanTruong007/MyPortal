@@ -10,7 +10,10 @@
 AS  
 BEGIN  
     SET NOCOUNT ON;  
+    declare @id table (Id int)
     insert into Security.[User] (UserName,UserMobile, UserEmail, FaceBookUrl, LinkedInUrl, TwitterUrl, PersonalWebUrl)  
-    values(@UserName, @UserMobile, @UserEmail, @FaceBookUrl, @LinkedInUrl, @TwitterUrl, @PersonalWebUrl)  
+    output inserted.UserId into @id(Id)
+    values(@UserName, @UserMobile, @UserEmail, @FaceBookUrl, @LinkedInUrl, @TwitterUrl, @PersonalWebUrl) 
+    select * from @id;
 END  
 GO  

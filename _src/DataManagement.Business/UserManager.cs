@@ -2,6 +2,8 @@
 using DataManagement.Entities;
 using DataManagement.Repository.Interfaces;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace DataManagement.Business
 {
     public class UserManager : IUserManager
@@ -11,21 +13,21 @@ namespace DataManagement.Business
         {
             _userRepository = userRepository;
         }
-        public bool AddUser(User user)
+        public async Task<int> AddUser(User user)
         {
-            return _userRepository.AddUser(user);
+            return await _userRepository.AddUser(user);
         }
         public bool DeleteUser(int userId)
         {
             return _userRepository.DeleteUser(userId);
         }
-        public IList<User> GetAllUser()
+        public async Task<IList<User>> GetAllUser()
         {
-            return _userRepository.GetAllUser();
+           return await _userRepository.GetAllUser();
         }
-        public User GetUserById(int userId)
+        public async Task<User> GetUserById(int userId)
         {
-            return _userRepository.GetUserById(userId);
+            return await _userRepository.GetUserById(userId);
         }
         public bool UpdateUser(User user)
         {
