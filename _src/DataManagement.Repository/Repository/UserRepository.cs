@@ -11,7 +11,7 @@ using static System.Data.CommandType;
 
 namespace DataManagement.Repository
 {
-    public class UserRepository : AppDbRepositoryBase<User>, IUserRepository
+    public class UserRepository : AppDbRepositoryExt<User>, IUserRepository
     {
         public UserRepository(IDbConnectionFactory dbConnectionFactory) : base(dbConnectionFactory) { }
 

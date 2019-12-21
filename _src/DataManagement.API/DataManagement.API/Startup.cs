@@ -53,7 +53,7 @@ namespace DataManagement.API
             //);
             //services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
             //services.AddSingleton(typeof(IRepository<>), typeof(AppDbConnectionRepository<>));
-            services.AddSingleton(typeof(IAppDbRepository<>), typeof(AppDbRepositoryBase<>));
+            services.AddSingleton(typeof(IAppDbRepository<>), typeof(AppDbRepositoryExt<>)); 
 
             //services.AddSingleton<IAppDbConnectionString,DbConnectionString>()
             //services.AddSingleton(typeof(IHandlerService<>), typeof(HandlerService<>));

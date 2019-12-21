@@ -7,8 +7,8 @@ using System.Data.SqlClient;
 
 namespace DataManagement.Repository
 {
-    public class AppDbRepositoryBase<T> : RepositoryBase<T>, IAppDbRepository<T> where T : class
+    public class AppDbRepositoryExt<T> : RepositoryBase<T>, IAppDbRepository<T> where T : class
     {
-        public AppDbRepositoryBase(IDbConnectionFactory dbConnectionFactory) : base(dbConnectionFactory.GetDbConnection(DatabaseConnection.AppDb)) { }
+        public AppDbRepositoryExt(IDbConnectionFactory dbConnectionFactory) : base(dbConnectionFactory.GetDbConnection(DatabaseConnection.AppDb)) { }
     }
 }

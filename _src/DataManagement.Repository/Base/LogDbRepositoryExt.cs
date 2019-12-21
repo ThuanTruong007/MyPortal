@@ -7,9 +7,9 @@ using System.Data.SqlClient;
 
 namespace DataManagement.Repository
 {
-    public class LogDbRepositoryBase<T> : RepositoryBase<T>, ILogDbRepository<T> where T : class
+    public class LogDbRepositoryExt<T> : RepositoryBase<T>, ILogDbRepository<T> where T : class
     {
-        public LogDbRepositoryBase(IDbConnectionFactory dbConnectionFactory) : base(dbConnectionFactory.GetDbConnection(DatabaseConnection.LogDb)) { }
+        public LogDbRepositoryExt(IDbConnectionFactory dbConnectionFactory) : base(dbConnectionFactory.GetDbConnection(DatabaseConnection.LogDb)) { }
     }
 }
 
