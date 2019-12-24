@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataManagement.Repository",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataManagement.Repository.Interfaces", "..\DataManagement.Repository.Interfaces\DataManagement.Repository.Interfaces.csproj", "{5A30635C-E7A7-49E9-80B5-054B125225FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManagement.Common", "..\Common\DataManagement.Common.csproj", "{4A6DCACC-093F-49ED-AE94-2143191630F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataManagement.Common", "..\Common\DataManagement.Common.csproj", "{4A6DCACC-093F-49ED-AE94-2143191630F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManagement.ApplicationService", "DataManagement.ApplicationService\DataManagement.ApplicationService.csproj", "{77A5195F-7A0A-4380-AF57-0C1D1FB5C705}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{4A6DCACC-093F-49ED-AE94-2143191630F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A6DCACC-093F-49ED-AE94-2143191630F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A6DCACC-093F-49ED-AE94-2143191630F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77A5195F-7A0A-4380-AF57-0C1D1FB5C705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77A5195F-7A0A-4380-AF57-0C1D1FB5C705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77A5195F-7A0A-4380-AF57-0C1D1FB5C705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77A5195F-7A0A-4380-AF57-0C1D1FB5C705}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,6 +7,7 @@ using DataManagement.Repository.Interfaces;
 using DataManagement.Entities.Enums;
 using Dapper;
 using System.Linq;
+using DataManagement.Common;
 
 namespace DataManagement.Repository
 {
@@ -30,7 +31,7 @@ namespace DataManagement.Repository
             using (var con = NewSqlConnection()) 
             {
                 var key = con.Insert(entity);
-                var keyProp = Common.Utils.GetEntityProperty<T>(KEY_COLUMN_ATTRIBUTE_NAME);
+                var keyProp = Utils.GetEntityProperty<T>(KEY_COLUMN_ATTRIBUTE_NAME);
                 keyProp?.SetValue(entity, key);
             }
         }
@@ -46,7 +47,7 @@ namespace DataManagement.Repository
         {
             using (var con = NewSqlConnection())
             {
-                var keyProp = Common.Utils.GetEntityProperty<T>(KEY_COLUMN_ATTRIBUTE_NAME);
+                var keyProp = Utils.GetEntityProperty<T>(KEY_COLUMN_ATTRIBUTE_NAME);
                 return con.GetList<T>($"where {keyProp?.Name} = @maxRow",new {maxRow=MAX_ROW_RETURN_GETLIST});
             }
         }

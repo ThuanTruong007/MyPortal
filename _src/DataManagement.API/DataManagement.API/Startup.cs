@@ -1,24 +1,12 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using DataManagement.Business;
 using DataManagement.Repository;
-using DataManagement.Business.Interfaces;
 using DataManagement.Repository.Interfaces;
 using DataManagement.Entities.Enums;
-using DataManagement.Entities;
-using Autofac;
-using DataManagement.API.Ioc;
-using System.Reflection;
 
 namespace DataManagement.API
 {
@@ -53,14 +41,13 @@ namespace DataManagement.API
             //);
             //services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
             //services.AddSingleton(typeof(IRepository<>), typeof(AppDbConnectionRepository<>));
-            services.AddSingleton(typeof(IAppDbRepository<>), typeof(AppDbRepositoryExt<>)); 
+            services.AddSingleton(typeof(IAppDbRepository<>), typeof(AppDbRepositoryExt<>));
 
             //services.AddSingleton<IAppDbConnectionString,DbConnectionString>()
             //services.AddSingleton(typeof(IHandlerService<>), typeof(HandlerService<>));
             //services.AddSingleton<IUserRepository, UserRepository>();
 
             //var assembly = Assembly.GetExecutingAssembly();
-
 
 
             //services.AddSingleton<IUserManager, UserManager>();
@@ -70,7 +57,7 @@ namespace DataManagement.API
             //        return new UserManager(new UserRepository(new DbConnectionFactory(databaseConnections)));
             //    }
             //    );
-
+            NetCoreAutoRegisterDI.RegisterAssemblyPublicNonGenericClasses(services);
             services.AddControllers().AddNewtonsoftJson();
         }
 
@@ -98,9 +85,9 @@ namespace DataManagement.API
             });
         }
 
-        public void ConfigureContainer(ContainerBuilder builder)
-        {
-            builder.RegisterModule<AutofacModule>();
-        }
+        //public void ConfigureContainer(ContainerBuilder builder)
+        //{
+        //    builder.RegisterModule<AutofacModule>();
+        //}
     }
 }
