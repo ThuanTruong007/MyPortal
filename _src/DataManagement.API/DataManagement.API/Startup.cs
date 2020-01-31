@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using DataManagement.Repository;
 using DataManagement.Repository.Interfaces;
 using DataManagement.Entities.Enums;
+using DataManagement.ApplicationService.Query;
 
 namespace DataManagement.API
 {
@@ -32,7 +33,7 @@ namespace DataManagement.API
 
             // Inject the factory
             services.AddSingleton<IDbConnectionFactory, DbConnectionFactory>();
-
+             
 
             //services.AddSingleton(typeof(IRepository<>),sp=> 
             //{
@@ -41,7 +42,10 @@ namespace DataManagement.API
             //);
             //services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
             //services.AddSingleton(typeof(IRepository<>), typeof(AppDbConnectionRepository<>));
-            services.AddSingleton(typeof(IAppDbRepository<>), typeof(AppDbRepositoryExt<>));
+            services.AddSingleton(typeof(IAppDbRepository<>), typeof(AppDbRepositoryBase<>));
+            //services.AddSingleton(typeof(IQuery<>), typeof(IQuery<>).Assembly);
+            //services.AddSingleton(typeof(IQueryHandler<,>), typeof(IQueryHandler<,>).Assembly); 
+            services.AddSingleton<IQueryProcessor, QueryProcessor>();
 
             //services.AddSingleton<IAppDbConnectionString,DbConnectionString>()
             //services.AddSingleton(typeof(IHandlerService<>), typeof(HandlerService<>));

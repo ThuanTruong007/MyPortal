@@ -11,7 +11,7 @@ using static System.Data.CommandType;
 
 namespace DataManagement.Repository.Repository
 {
-    public class AppConfigRepository : AppDbRepositoryExt<AppConfig>, IAppConfigRepository
+    public class AppConfigRepository : AppDbRepositoryBase<AppConfig>, IAppConfigRepository
     {
         public AppConfigRepository(IDbConnectionFactory dbConnectionFactory) : base(dbConnectionFactory) { }     
     }

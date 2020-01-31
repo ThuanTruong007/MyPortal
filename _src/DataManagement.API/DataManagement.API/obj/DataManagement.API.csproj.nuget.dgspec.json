@@ -52,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -81,6 +81,9 @@
             "projectReferences": {
               "C:\\_project\\MyPortal\\_src\\Common\\DataManagement.Common.csproj": {
                 "projectPath": "C:\\_project\\MyPortal\\_src\\Common\\DataManagement.Common.csproj"
+              },
+              "C:\\_project\\MyPortal\\_src\\DataManagement.API\\DataManagement.ApplicationService\\DataManagement.ApplicationService.csproj": {
+                "projectPath": "C:\\_project\\MyPortal\\_src\\DataManagement.API\\DataManagement.ApplicationService\\DataManagement.ApplicationService.csproj"
               },
               "C:\\_project\\MyPortal\\_src\\DataManagement.Business.Interfaces\\DataManagement.Business.Interfaces.csproj": {
                 "projectPath": "C:\\_project\\MyPortal\\_src\\DataManagement.Business.Interfaces\\DataManagement.Business.Interfaces.csproj"
@@ -148,7 +151,72 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_project\\MyPortal\\_src\\DataManagement.API\\DataManagement.ApplicationService\\DataManagement.ApplicationService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_project\\MyPortal\\_src\\DataManagement.API\\DataManagement.ApplicationService\\DataManagement.ApplicationService.csproj",
+        "projectName": "DataManagement.ApplicationService",
+        "projectPath": "C:\\_project\\MyPortal\\_src\\DataManagement.API\\DataManagement.ApplicationService\\DataManagement.ApplicationService.csproj",
+        "packagesPath": "C:\\Users\\tim.truong\\.nuget\\packages\\",
+        "outputPath": "C:\\_project\\MyPortal\\_src\\DataManagement.API\\DataManagement.ApplicationService\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\tim.truong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {
+              "C:\\_project\\MyPortal\\_src\\DataManagement.Entities\\DataManagement.Entities.csproj": {
+                "projectPath": "C:\\_project\\MyPortal\\_src\\DataManagement.Entities\\DataManagement.Entities.csproj"
+              },
+              "C:\\_project\\MyPortal\\_src\\DataManagement.Repository.Interfaces\\DataManagement.Repository.Interfaces.csproj": {
+                "projectPath": "C:\\_project\\MyPortal\\_src\\DataManagement.Repository.Interfaces\\DataManagement.Repository.Interfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "NHibernate": {
+              "target": "Package",
+              "version": "[5.2.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -204,7 +272,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -263,7 +331,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -321,7 +389,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -377,7 +445,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -454,7 +522,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

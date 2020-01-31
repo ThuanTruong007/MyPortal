@@ -8,23 +8,28 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using DataManagement.Common;
-
+using DataManagement.ApplicationService.Query;
+using DataManagement.ApplicationService.Command;
 
 namespace DataManagement.API
 {
     public class NetCoreAutoRegisterDI
     {
-        public static void RegisterAssemblyPublicNonGenericClasses(IServiceCollection service)
+        public static void RegisterAssemblyPublicNonGenericClasses(IServiceCollection services)
         {
             var assembliesToScan = new[]
 {
                 Assembly.GetExecutingAssembly()
                 ,Assembly.GetAssembly(typeof(UserManager))
                 ,Assembly.GetAssembly(typeof(UserRepository))
+                //,Assembly.GetAssembly(typeof(UserByIdHandler))
             };
-            service.RegisterAssemblyPublicNonGenericClasses(assembliesToScan)
+            services.RegisterAssemblyPublicNonGenericClasses(assembliesToScan)
+                //.Where(c => c.Name.EndsWithList(new string[] { "Repository", "Manager","Query" }))
                 .Where(c => c.Name.EndsWithList(new string[] { "Repository", "Manager" }))
-                .AsPublicImplementedInterfaces(ServiceLifetime.Singleton);                
-        }
+                .AsPublicImplementedInterfaces(ServiceLifetime.Singleton);
+            services.AddCommandQueryHandlers(typeof(IQueryHandler<,>));
+            services.AddCommandQueryHandlers(typeof(ICommandHandler<,>));
+        }           
     }
 }

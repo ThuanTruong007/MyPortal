@@ -2363,6 +2363,21 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "DataManagement.ApplicationService/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "DataManagement.Entities": "1.0.0",
+          "DataManagement.Repository.Interfaces": "1.0.0",
+          "NHibernate": "5.2.6"
+        },
+        "compile": {
+          "bin/placeholder/DataManagement.ApplicationService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataManagement.ApplicationService.dll": {}
+        }
+      },
       "DataManagement.Business/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -7928,6 +7943,11 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "DataManagement.ApplicationService/1.0.0": {
+      "type": "project",
+      "path": "../DataManagement.ApplicationService/DataManagement.ApplicationService.csproj",
+      "msbuildProject": "../DataManagement.ApplicationService/DataManagement.ApplicationService.csproj"
+    },
     "DataManagement.Business/1.0.0": {
       "type": "project",
       "path": "../../DataManagement.Business/DataManagement.Business.csproj",
@@ -7961,6 +7981,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "DataManagement.ApplicationService >= 1.0.0",
       "DataManagement.Business >= 1.0.0",
       "DataManagement.Business.Interfaces >= 1.0.0",
       "DataManagement.Common >= 1.0.0",
@@ -8002,6 +8023,9 @@
           "projectReferences": {
             "C:\\_project\\MyPortal\\_src\\Common\\DataManagement.Common.csproj": {
               "projectPath": "C:\\_project\\MyPortal\\_src\\Common\\DataManagement.Common.csproj"
+            },
+            "C:\\_project\\MyPortal\\_src\\DataManagement.API\\DataManagement.ApplicationService\\DataManagement.ApplicationService.csproj": {
+              "projectPath": "C:\\_project\\MyPortal\\_src\\DataManagement.API\\DataManagement.ApplicationService\\DataManagement.ApplicationService.csproj"
             },
             "C:\\_project\\MyPortal\\_src\\DataManagement.Business.Interfaces\\DataManagement.Business.Interfaces.csproj": {
               "projectPath": "C:\\_project\\MyPortal\\_src\\DataManagement.Business.Interfaces\\DataManagement.Business.Interfaces.csproj"
@@ -8069,7 +8093,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

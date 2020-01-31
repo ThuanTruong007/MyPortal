@@ -4,6 +4,7 @@ using DataManagement.Business.Interfaces;
 using DataManagement.Entities;
 using System.Threading.Tasks;
 using DataManagement.Repository.Interfaces;
+using DataManagement.ApplicationService.Query;
 // For more information on enabling Web API for empty projects, visit https//go.microsoft.com/fwlink/?LinkID=397860  
 namespace DataManagement.API.Controllers
 {
@@ -15,14 +16,20 @@ namespace DataManagement.API.Controllers
         readonly IAppDbRepository<User> _appDbRepository;
         readonly IUserRepository _userRepository;
         readonly IAppConfigRepository _appConfigRepository;
+        readonly IQueryHandler<UserByIdQuery, User> _userByIdHandler; 
 
         //public UserController(IUserManager userManager, IRepository<User> userRepository)
-        public UserController(IAppDbRepository<User> userRepository, IUserRepository userRepository1, IUserManager userManager, IAppConfigRepository appConfigRepository)
+        public UserController(IAppDbRepository<User> userRepository
+            , IUserRepository userRepository1
+            , IUserManager userManager
+            , IAppConfigRepository appConfigRepository
+            , IQueryHandler<UserByIdQuery, User> userByIdHandler)
         {
             _userManager = userManager;
             _userRepository = userRepository1;
             _appDbRepository = userRepository;
             _appConfigRepository = appConfigRepository;
+            _userByIdHandler = userByIdHandler;
         }
         // GET<td style="border<td style="border: 1px dashed #ababab;"> 1px dashed #ababab;"> api/user  
         [HttpGet]
@@ -39,6 +46,7 @@ namespace DataManagement.API.Controllers
         {
             var result = await _userManager.GetUserById(id);
             //var result =  _userManager.GetUserById(id);
+            result = await _userByIdHandler.HandlerAsync(new UserByIdQuery() {UserId=id });
             return Ok(result);
         }
         //// POST api/user  
