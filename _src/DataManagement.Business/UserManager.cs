@@ -17,9 +17,9 @@ namespace DataManagement.Business
         {
             return await _userRepository.AddUser(user);
         }
-        public bool DeleteUser(int userId)
+        public async Task<bool> DeleteUser(int userId)
         {
-            return _userRepository.DeleteUser(userId);
+            return await _userRepository.DeleteUser(userId);
         }
         public async Task<IList<User>> GetAllUser()
         {

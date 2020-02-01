@@ -8,7 +8,7 @@ namespace DataManagement.Business.Interfaces
     {
         Task<int> AddUser(User user);
         bool UpdateUser(User user);
-        bool DeleteUser(int userId);
+        Task<bool> DeleteUser(int userId);
         Task<IList<User>> GetAllUser();
         Task<User> GetUserById(int userId);
     }

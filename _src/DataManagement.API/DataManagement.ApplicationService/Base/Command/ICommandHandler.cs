@@ -8,7 +8,7 @@ namespace DataManagement.ApplicationService.Command
 {
     public interface ICommandHandler<Tcommand, Tresult> where Tcommand : ICommand<Tresult>
     {
-        Task<Tresult> HandleAsync(Tcommand tcommand);
+        Task<Tresult> HandlerAsync(Tcommand tcommand);
     }
 }
 

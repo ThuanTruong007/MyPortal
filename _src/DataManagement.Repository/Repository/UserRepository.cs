@@ -37,14 +37,14 @@ namespace DataManagement.Repository
                 throw ex;
             }
         }
-        public bool DeleteUser(int userId)
+        public async  Task<bool> DeleteUser(int userId)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@UserId", userId);
             using (var con = NewSqlConnection())
             {
-                SqlMapper.Execute(con, "DeleteUser", param: parameters, commandType: StoredProcedure);
-                return true;
+                var count = await SqlMapper.ExecuteScalarAsync<int>(con, "[Security].[uspDeleteUser]", param: parameters, commandType: StoredProcedure);
+                return count>0;
             }
         }
         public async Task<IList<User>> GetAllUser()

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataManagement.ApplicationService.Query
 {
-    public class UserByIdQuery : IQuery<User>
+    public class GetUserByIdQuery : IQuery<User>
     {
         [Required]
         public int UserId { get; set; }
