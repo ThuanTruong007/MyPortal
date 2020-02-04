@@ -80,7 +80,7 @@ namespace DataManagement.API.Controllers
         //[HttpPut("{id}")]
         //public void Put(int id, [FromBody] User user)
         //{
-        //    _userManager.UpdateUser(user);
+        //    _userManager.UpdateUser(user); 
         //}
         // DELETE api/user/5  
         [HttpDelete("{id}")]

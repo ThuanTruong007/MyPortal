@@ -10,5 +10,5 @@ BEGIN
 	output inserted.UserId into @id(Id)
 	where UserId = @UserId  
 	
-	select count(*) from @id
+	select top 1 id from @id
 END  

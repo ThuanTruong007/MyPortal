@@ -43,8 +43,8 @@ namespace DataManagement.Repository
             parameters.Add("@UserId", userId);
             using (var con = NewSqlConnection())
             {
-                var count = await SqlMapper.ExecuteScalarAsync<int>(con, "[Security].[uspDeleteUser]", param: parameters, commandType: StoredProcedure);
-                return count>0;
+                var id = await SqlMapper.ExecuteScalarAsync<int>(con, "[Security].[uspDeleteUser]", param: parameters, commandType: StoredProcedure);
+                return userId==id;
             }
         }
         public async Task<IList<User>> GetAllUser()
